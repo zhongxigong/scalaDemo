@@ -1,5 +1,3 @@
-import java.io._
-import java.nio.file._
 import scala.io.Source
 
 /**
