@@ -20,8 +20,9 @@ libraryDependencies += "junit" % "junit-dep" % "4.11" % "provided"
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
 //libraryDependencies += "org.springframework.boot" % "spring-boot-starter" % "1.4.2.RELEASE"
 
+
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-libraryDependencies += "org.springframework.boot" % "spring-boot-starter-web" % "1.4.2.RELEASE"
+libraryDependencies += "org.springframework.boot" % "spring-boot-starter-web" % "1.4.3.RELEASE"
 
 // https://mvnrepository.com/artifact/com.google.code.gson/gson
 libraryDependencies += "com.google.code.gson" % "gson" % "2.7"
@@ -34,28 +35,6 @@ libraryDependencies ++= Seq(
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.40"
 
-val defaultMergeStrategy: String => MergeStrategy = {
-  case x if Assembly.isConfigFile(x) =>
-    MergeStrategy.concat
-  case PathList(ps @ _*) if Assembly.isReadme(ps.last) || Assembly.isLicenseFile(ps.last) =>
-    MergeStrategy.rename
-  case PathList(ps @ _*) if ps.last endsWith ".json" => MergeStrategy.filterDistinctLines
-  case PathList("META-INF", xs @ _*) =>
-    (xs map {_.toLowerCase}) match {
-      case ("manifest.mf" :: Nil) | ("index.list" :: Nil) | ("dependencies" :: Nil) =>
-        MergeStrategy.discard
-      case ps @ (x :: xs) if ps.last.endsWith(".sf") || ps.last.endsWith(".dsa") =>
-        MergeStrategy.discard
-      case "plexus" :: xs =>
-        MergeStrategy.discard
-      case "services" :: xs =>
-        MergeStrategy.filterDistinctLines
-      case ("spring.schemas" :: Nil) | ("spring.handlers" :: Nil) =>
-        MergeStrategy.filterDistinctLines
-      case _ => MergeStrategy.deduplicate
-    }
-  case _ => MergeStrategy.deduplicate
-}
 
-
-
+// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+libraryDependencies += "com.squareup.okhttp3" % "okhttp" % "3.5.0"
