@@ -47,7 +47,7 @@ try{
     db.run(a)
     val delete = students.filter(_.id > 8).delete
     db.run(delete).map(numDeleteRows => println(s"delete $numDeleteRows rows"))
-    var update = students.map(_.name).update("xxxx")
+    val update = students.map(_.name).update("xxxx")
     db.run(update).map(numUpdateRows => println(s"update $numUpdateRows rows"))
   }
   Await.result(tmpResult,Duration.Inf)

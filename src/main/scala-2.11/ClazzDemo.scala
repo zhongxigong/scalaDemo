@@ -3,8 +3,15 @@
   */
 object ClazzDemo {
   def main(args: Array[String]): Unit = {
+    println("before Human")
     val h = new Human
+
+    /**
+      * 在创建Human对象的时候，Human里面的语句会顺序执行。
+      */
+    println("after Human")
     println(h.flight())
+    h.fly()
   }
 }
 
